@@ -1,16 +1,37 @@
 # APT Pakete
 
-# --- Schritt 1: Paketlisten aktualisieren ---
-sudo apt update
+# --- Schritt 1: Erste Einrichtung ---
+
+# System aktualisieren
+sudo apt update && sudo apt upgrade -y
+
+# UFW aktivieren
+sudo ufw enable
+
+# bin Ordner erstellen
+mkdir ~/.local/bin
 
 # --- Schritt 2: Die gewünschten Anwendungen installieren ---
 sudo apt install -y htop git curl tmux vim neovim
 
-# --- Schritt 3: Erfolgsmeldung ---
+# --- Schritt 3: pyenv installieren ---
+curl -fsSL https://pyenv.run | bash
+
+# Set up your shell environment for Pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init - bash)"' >> ~/.bashrc
+
+# Install Python build dependencies
+sudo apt install make build-essential libssl-dev zlib1g-dev \
+libbz2-dev libreadline-dev libsqlite3-dev curl git \
+libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
+# --- Schritt 4: Erfolgsmeldung ---
 echo ""
 echo "Installation abgeschlossen! Alle Programme wurden erfolgreich installiert."
 
-# --- Schritt 4: Docker einrichten ---
+# --- Schritt 5: Docker einrichten ---
 
 # Add Docker's official GPG key:
 sudo apt-get update
