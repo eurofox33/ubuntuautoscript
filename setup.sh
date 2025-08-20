@@ -6,7 +6,7 @@
 sudo apt update && sudo apt upgrade -y
 
 # --- Schritt 2: Die gewünschten Anwendungen installieren ---
-sudo apt install -y htop git curl tmux vim
+sudo apt install -y htop ufw git curl tmux vim
 
 # UFW aktivieren
 sudo ufw enable
