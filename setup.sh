@@ -5,14 +5,11 @@
 # System aktualisieren
 sudo apt update && sudo apt upgrade -y
 
+# --- Schritt 2: Die gewünschten Anwendungen installieren ---
+sudo apt install -y htop git curl tmux vim
+
 # UFW aktivieren
 sudo ufw enable
-
-# bin Ordner erstellen
-mkdir ~/.local/bin
-
-# --- Schritt 2: Die gewünschten Anwendungen installieren ---
-sudo apt install -y htop git curl tmux vim neovim
 
 # --- Schritt 3: pyenv installieren ---
 curl -fsSL https://pyenv.run | bash
@@ -23,13 +20,14 @@ echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bas
 echo 'eval "$(pyenv init - bash)"' >> ~/.bashrc
 
 # Install Python build dependencies
-sudo apt install make build-essential libssl-dev zlib1g-dev \
+sudo apt install -y make build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev curl git \
 libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
-# --- Schritt 4: Erfolgsmeldung ---
-echo ""
-echo "Installation abgeschlossen! Alle Programme wurden erfolgreich installiert."
+# --- Schritt 6: yt-dlp installieren ---
+mkdir ~/.local/bin
+curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o ~/.local/bin/yt-dlp
+chmod +x ~/.local/bin/yt-dlp
 
 # --- Schritt 5: Docker einrichten ---
 
@@ -48,14 +46,10 @@ echo \
 sudo apt-get update
 
 # --- Docker Pakete installieren ---
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Docker Gruppe erstellen
 sudo groupadd docker
 
 # User in die Docker Gruppe
 sudo usermod -aG docker $USER
-
-# --- Schritt 5: Erfolgsmeldung ---
-echo ""
-echo "Installation abgeschlossen! Docker erfolgreich installiert."
