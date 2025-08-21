@@ -49,3 +49,5 @@ sudo groupadd docker
 
 # User in die Docker Gruppe
 sudo usermod -aG docker $USER
+
+newgrp docker
