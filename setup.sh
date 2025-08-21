@@ -1,5 +1,3 @@
-# APT Pakete
-
 # --- Schritt 1: Erste Einrichtung ---
 
 # System aktualisieren
