@@ -4,7 +4,7 @@
 sudo apt update && sudo apt upgrade -y
 
 # --- Schritt 2: Die gewünschten Anwendungen installieren ---
-sudo apt install -y htop git curl tmux vim
+sudo apt install -y htop git curl tmux vim python3-venv
 sudo apt install -t noble-backports yt-dlp -y
 
 # --- Schritt 3: pyenv installieren ---
